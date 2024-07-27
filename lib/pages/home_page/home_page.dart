@@ -8,11 +8,14 @@ import 'package:merchant_app/core/global_component/vcustom_button.dart';
 import 'package:merchant_app/core/utils/cconstant.dart';
 import 'package:merchant_app/core/utils/vcolor_utils.dart';
 import 'package:merchant_app/core/utils/vimage_constant.dart';
+import 'package:merchant_app/pages/home_page/component/disaster_card_component.dart';
 import 'package:merchant_app/pages/home_page/controller/home_page_controller.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -86,79 +89,11 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Stack(
                   children: [
-                    Container(
-                      height: Cconstant.getFullHeight(context) * 0.20,
-                      padding: const EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: VColorUtils.secondaryColors, // Border color
-                            width: 3, // Border width
-                          ),
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              // const Icon(Icons.circle_notifications_sharp),
-                              Image.asset(
-                                VImageConstant.dangerIcon,
-                                width: 17,
-                                height: 17,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: CText(
-                                    text: 'Danger',
-                                    textColor: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Divider(
-                            color: VColorUtils.secondaryColors,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(Icons.message),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: CText(
-                                    text: 'Earthquake',
-                                    textColor: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                    const DisasterCardComponent(
+                      disasterCode: "000",
+                      disasterName: "Earthquake",
+                      statusDisasterName: "Safe",
+                      statusDisasterCode: "03",
                     ),
                     Positioned(
                       left: 0,
