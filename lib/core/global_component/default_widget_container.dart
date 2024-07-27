@@ -41,6 +41,7 @@ class DefaultWidgetContainer extends StatelessWidget {
     this.titleAppBar,
     this.isLoading,
     this.noUseAppBar = false,
+    this.createCustomBody = false,
   });
   final PreferredSizeWidget? appBar;
   final Widget body;
@@ -74,6 +75,7 @@ class DefaultWidgetContainer extends StatelessWidget {
   final String? titleAppBar;
   final bool? isLoading;
   final bool? noUseAppBar;
+  final bool? createCustomBody;
   final Key? scaffoldKey;
 
   @override
@@ -81,24 +83,28 @@ class DefaultWidgetContainer extends StatelessWidget {
     return BaseWidgetContainer(
       canPop: canPop ?? true,
       onPopInvoked: onPopInvoked,
-      body: Stack(
-        children: [
-          noUseAppBar ?? false
-              ? const SizedBox()
-              : VcustomAppbar(
-                  titleAppBar: titleAppBar,
+      body: createCustomBody ?? false
+          ? body
+          : Stack(
+              children: [
+                noUseAppBar ?? false
+                    ? const SizedBox()
+                    : VcustomAppbar(
+                        titleAppBar: titleAppBar,
+                      ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 27,
+                    right: 27,
+                    top: Cconstant.getFullHeight(context) * 0.12,
+                  ),
+                  child: body,
                 ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 27,
-              right: 27,
-              top: Cconstant.getFullHeight(context) * 0.12,
+                isLoading ?? false
+                    ? const VdefaultScreenLoading()
+                    : const SizedBox()
+              ],
             ),
-            child: body,
-          ),
-          isLoading ?? false ? const VdefaultScreenLoading() : const SizedBox()
-        ],
-      ),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? false,
       floatingActionButton: floatingActionButton,
       backgroundColor: backgroundColor,
