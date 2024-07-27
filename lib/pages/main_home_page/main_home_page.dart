@@ -26,10 +26,6 @@ class MainHomePage extends StatelessWidget {
             icon: Icon(Icons.history),
             label: "Report History",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Account",
-          ),
         ],
       ),
     );
