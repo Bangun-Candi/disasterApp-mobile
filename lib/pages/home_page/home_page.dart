@@ -115,7 +115,9 @@ class HomePage extends StatelessWidget {
                       bottom: 0,
                       right: 0,
                       child: VcustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _controller.sendRescueRequest();
+                        },
                         titleButton: "Send Rescue",
                       ),
                     )

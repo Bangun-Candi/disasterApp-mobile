@@ -1,6 +1,7 @@
 import 'package:merchant_app/core/services/model/base_response_model.dart';
 import 'package:merchant_app/repositories/home_page_repo/dummy_data/get_my_location_dummy.dart';
 import 'package:merchant_app/repositories/home_page_repo/request/get_my_location_request.dart';
+import 'package:merchant_app/repositories/home_page_repo/request/send_rescue_request.dart';
 import 'package:merchant_app/repositories/home_page_repo/response/get_my_location_response.dart';
 import 'package:merchant_app/repositories/home_page_repo/view_data_model/get_my_location_DM.dart';
 
@@ -22,6 +23,26 @@ class HomePageRepository {
       ..statusLocation = responseData.statusLocation;
 
     baseModelResponse.data = dataDM;
+
+    return baseModelResponse;
+    // try {
+    //   var response = await Dio().get('$_baseUrl/list');
+    //   if (response.statusCode == 200) {
+    //     //print(response.data);
+    //     // var result = RestaurantListModel.fromJson(response.data);
+
+    //     return result;
+    //   } else {
+    //     throw Exception('failed to load data');
+    //   }
+    // } catch (e) {
+    //   rethrow;
+    // }
+  }
+
+  Future<BaseResponseModel> sendRescue(SendRescueRequest param) async {
+    BaseResponseModel baseModelResponse =
+        BaseResponseModel.fromJson(GetMyLocationDummy().getMyLocationDummy);
 
     return baseModelResponse;
     // try {
