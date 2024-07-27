@@ -5,6 +5,8 @@ import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:merchant_app/core/global_component/default_widget_container.dart';
 import 'package:merchant_app/core/global_component/vcustom_button.dart';
+import 'package:merchant_app/core/global_component/vdefault_screen_loading.dart';
+import 'package:merchant_app/core/global_component/vmap_component.dart';
 import 'package:merchant_app/core/utils/cconstant.dart';
 import 'package:merchant_app/core/utils/vcolor_utils.dart';
 import 'package:merchant_app/core/utils/vimage_constant.dart';
@@ -24,20 +26,25 @@ class HomePage extends StatelessWidget {
       createCustomBody: true,
       body: Stack(
         children: [
-          OSMFlutter(
-            controller: _controller.mapController,
-            osmOption: const OSMOption(
-              userTrackingOption: UserTrackingOption(
-                enableTracking: true,
-                unFollowUser: false,
-              ),
-              zoomOption: ZoomOption(
-                initZoom: 15,
-                minZoomLevel: 3,
-                maxZoomLevel: 19,
-                stepZoom: 1.0,
-              ),
-            ),
+          // OSMFlutter(
+          //   controller: _controller.mapController,
+          //   osmOption: const OSMOption(
+          //     userTrackingOption: UserTrackingOption(
+          //       enableTracking: true,
+          //       unFollowUser: false,
+          //     ),
+          //     zoomOption: ZoomOption(
+          //       initZoom: 15,
+          //       minZoomLevel: 3,
+          //       maxZoomLevel: 19,
+          //       stepZoom: 1.0,
+          //     ),
+          //   ),
+          // ),
+          VMapComponent(
+            getLatLongResult: (longitude, latitude) {
+              _controller.getMylocationData(latitude, longitude);
+            },
           ),
           SlidingUpPanel(
             minHeight: Cconstant.getFullHeight(context) * 0.47,
@@ -71,11 +78,13 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const CText(
-                    text: "Location Name",
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    textColor: Colors.white,
+                  Obx(
+                    () => CText(
+                      text: _controller.myLocationData.value.locationName ?? "",
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      textColor: Colors.white,
+                    ),
                   ),
                 ],
               ),
@@ -89,11 +98,17 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Stack(
                   children: [
-                    const DisasterCardComponent(
-                      disasterCode: "000",
-                      disasterName: "Earthquake",
-                      statusDisasterName: "Safe",
-                      statusDisasterCode: "03",
+                    Obx(
+                      () => DisasterCardComponent(
+                        disasterCode:
+                            _controller.myLocationData.value.disasterNameCode ??
+                                "",
+                        disasterName:
+                            _controller.myLocationData.value.disasterName ?? "",
+                        statusDisasterCode: _controller
+                                .myLocationData.value.statusDisasterCode ??
+                            "",
+                      ),
                     ),
                     Positioned(
                       left: 0,
@@ -111,6 +126,11 @@ class HomePage extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(25), topRight: Radius.circular(25)),
           ),
+          Obx(
+            () => _controller.isLoading.value
+                ? const VdefaultScreenLoading()
+                : const SizedBox(),
+          )
         ],
       ),
     );

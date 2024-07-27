@@ -9,17 +9,17 @@ class DisasterCardComponent extends StatelessWidget {
       {super.key,
       required this.disasterCode,
       required this.disasterName,
-      required this.statusDisasterName,
+      // required this.statusDisasterName,
       required this.statusDisasterCode});
   final String disasterCode;
   final String disasterName;
-  final String statusDisasterName;
+  // final String statusDisasterName;
   final String statusDisasterCode;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Cconstant.getFullHeight(context) * 0.17,
+      height: Cconstant.getFullHeight(context) * 0.20,
       padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
           border: Border.all(

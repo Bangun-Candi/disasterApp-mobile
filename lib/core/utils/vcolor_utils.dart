@@ -9,7 +9,7 @@ class VColorUtils {
   static const Color textGreyColors = Color(0xFF9796A1);
 
   static const Color borderColors = Color(0xFFEEEEEE);
-  static const Color dangerColors = Color(0xFFEE2737);
+  static const Color dangerColors = Color(0xFFAC3E3E);
   static const Color warningColors = Color(0xFFCC822B);
-  static const Color safeColors = Color(0xFF00AA13);
+  static const Color safeColors = Color(0xFF63BA55);
 }

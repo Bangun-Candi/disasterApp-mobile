@@ -8,7 +8,7 @@ class VdefaultScreenLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const DefaultScreenLoading(
-      indicatorColor: VColorUtils.primaryColors,
+      indicatorColor: VColorUtils.secondaryColors,
     );
   }
 }
