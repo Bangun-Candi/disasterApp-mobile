@@ -58,6 +58,8 @@ dependencies:
   json_model: ^1.0.0
   flutter_osm_plugin: ^1.2.0
   osm_flutter_hooks: ^1.4.0
+  sliding_up_panel2: ^3.3.0+1
+  # sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
