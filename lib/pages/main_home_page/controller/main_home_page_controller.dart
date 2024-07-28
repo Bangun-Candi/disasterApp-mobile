@@ -43,7 +43,7 @@ class MainHomePageController extends GetxController {
     });
 
     // Handle background and terminated state messages
-    // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     super.onInit();
   }
 

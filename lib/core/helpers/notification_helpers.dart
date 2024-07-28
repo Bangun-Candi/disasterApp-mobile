@@ -21,7 +21,7 @@ class NotificationHelpers {
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
-        const AndroidInitializationSettings('splash_screen_icon');
+        const AndroidInitializationSettings('app_icon');
 
     var initializationSettingsIOS = const DarwinInitializationSettings(
       requestAlertPermission: false,
