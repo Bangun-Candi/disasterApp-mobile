@@ -70,6 +70,8 @@ class HomePageController extends GetxController {
     isLoading.value = false;
   }
 
+  /// BLE HANDLE =============================================
+
   Future<void> _searchForBleDevice() async {
     _bleService.scanForDevices().listen((device) async {
       LogUtility.writeLog("Found device: ${device.name}");
@@ -87,4 +89,6 @@ class HomePageController extends GetxController {
       sendRescueRequest();
     });
   }
+
+  /// UNTIL HERE HANDLE BLE =============================================
 }
