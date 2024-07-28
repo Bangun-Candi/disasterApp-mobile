@@ -9,7 +9,7 @@ class MainHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(MainHomePageController());
+    var _controller = Get.put(MainHomePageController(context: context));
     return DefaultWidgetContainer(
       createCustomBody: true,
       resizeToAvoidBottomInset: false,
