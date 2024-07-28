@@ -23,7 +23,7 @@ class VcustomButton extends StatelessWidget {
       fontSize: 17,
       fontColor: VColorUtils.backgroundColors,
       fontWeight: FontWeight.w700,
-      backgroundColors: VColorUtils.secondaryColors,
+      backgroundColors: VColorUtils.primaryColors,
       borderRadius: 30,
       removeElevation: true,
       enableButton: enableButton,

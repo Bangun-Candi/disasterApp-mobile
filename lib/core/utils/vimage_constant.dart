@@ -18,6 +18,7 @@ class VImageConstant {
   static const String safeIcon = '${_icons}safe-icon.png';
   static const String warningIcon = '${_icons}warning-icon.png';
   static const String dangerIcon = '${_icons}danger-icon.png';
+  static const String checkIcon = '${_icons}checklist-icon.png';
 
   // Illustration
   static const String ktpIllustration = '${_illustration}ktp-illustration.png';

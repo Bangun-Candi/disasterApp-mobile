@@ -13,12 +13,12 @@ class IconAppComponent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CText(
-          text: "Merchant",
+          text: "Life",
           fontSize: fontSize ?? 40,
           fontWeight: FontWeight.w900,
         ),
         CText(
-          text: "In",
+          text: "Beacon",
           textColor: VColorUtils.primaryColors,
           fontSize: fontSize ?? 40,
           fontWeight: FontWeight.w900,

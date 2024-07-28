@@ -19,9 +19,12 @@ class MainHomePage extends StatelessWidget {
         backgroundColor: VColorUtils.backgroundColors,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
+              icon: Icon(Icons.home),
+              label: "Home",
+              activeIcon: Icon(
+                Icons.home,
+                color: VColorUtils.primaryColors,
+              )),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: "Report History",

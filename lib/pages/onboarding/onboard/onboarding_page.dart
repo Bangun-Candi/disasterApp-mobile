@@ -55,14 +55,16 @@ class OnboardingPage extends StatelessWidget {
               child: Column(
                 children: [
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _controller.gotoLogin();
+                    },
                     titleButton: "Login",
                     fontSize: 17,
-                    fontColor: VColorUtils.backgroundColors,
+                    // fontColor: VColorUtils.backgroundColors,
                     fontWeight: FontWeight.w700,
                     buttonHeight: 54,
                     backgroundColors:
-                        VColorUtils.backgroundColors.withOpacity(0.4),
+                        VColorUtils.primaryColors.withOpacity(0.8),
                     needBorder: true,
                     borderColors: VColorUtils.textWhiteColors,
                     borderRadius: 30,
@@ -78,7 +80,6 @@ class OnboardingPage extends StatelessWidget {
                         text: "Don't have account? ",
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        textColor: VColorUtils.textWhiteColors,
                       ),
                       InkWell(
                         onTap: () {
@@ -88,7 +89,6 @@ class OnboardingPage extends StatelessWidget {
                           text: "Sign up",
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          textColor: VColorUtils.textWhiteColors,
                         ),
                       )
                     ],

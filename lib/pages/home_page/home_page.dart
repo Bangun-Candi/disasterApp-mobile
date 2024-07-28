@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(HomePageController());
+    var _controller = Get.put(HomePageController(context: context));
     return DefaultWidgetContainer(
       createCustomBody: true,
       body: Stack(
@@ -52,9 +52,9 @@ class HomePage extends StatelessWidget {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(25), topRight: Radius.circular(25)),
             panelBuilder: () {
-              return SizedBox();
+              return const SizedBox();
             },
-            color: VColorUtils.secondaryColors,
+            color: VColorUtils.primaryColors,
             header: Padding(
               padding: EdgeInsets.only(
                 left: 20,
@@ -114,11 +114,14 @@ class HomePage extends StatelessWidget {
                       left: 0,
                       bottom: 0,
                       right: 0,
-                      child: VcustomButton(
-                        onPressed: () {
-                          _controller.sendRescueRequest();
-                        },
-                        titleButton: "Send Rescue",
+                      child: Obx(
+                        () => VcustomButton(
+                          enableButton: _controller.enableButton.value,
+                          onPressed: () {
+                            _controller.sendRescueRequest();
+                          },
+                          titleButton: "Send Rescue",
+                        ),
                       ),
                     )
                   ],

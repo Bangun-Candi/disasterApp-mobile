@@ -1,10 +1,13 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:get/get.dart';
 import 'package:merchant_app/core/helpers/ble_helpers.dart';
 import 'package:merchant_app/core/services/model/base_response_model.dart';
+import 'package:merchant_app/core/utils/vimage_constant.dart';
 import 'package:merchant_app/repositories/home_page_repo/home_page_repository.dart';
 import 'package:merchant_app/repositories/home_page_repo/request/get_my_location_request.dart';
 import 'package:merchant_app/repositories/home_page_repo/request/send_rescue_request.dart';
@@ -14,12 +17,18 @@ class HomePageController extends GetxController {
   // late MapController mapController;
 
   RxBool isLoading = false.obs;
+  RxBool hasbeenSend = false.obs;
+  RxBool enableButton = true.obs;
   Rx<GetMyLocationDM> myLocationData = GetMyLocationDM().obs;
 
   double longitude = 0;
   double latitude = 0;
 
   final BLEHelpers _bleService = BLEHelpers();
+
+  BuildContext context;
+
+  HomePageController({required this.context});
 
   getMylocationData(double latitudeData, double longitudeData) async {
     isLoading.value = true;
@@ -68,6 +77,32 @@ class HomePageController extends GetxController {
     }
 
     isLoading.value = false;
+
+    if (!hasbeenSend.value) {
+      hasbeenSend.value = true;
+      enableButton.value = false;
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialogComponent(
+            imageAssets: VImageConstant.checkIcon,
+            description: "",
+            message: "Your Rescue has been sended",
+          );
+        },
+      );
+    }
+
+    calRescueAgain();
+  }
+
+  calRescueAgain() {
+    Timer timer = Timer.periodic(
+      const Duration(seconds: 10),
+      (timer) {
+        sendRescueRequest();
+      },
+    );
   }
 
   /// BLE HANDLE =============================================

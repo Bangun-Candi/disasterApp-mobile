@@ -23,7 +23,7 @@ class DisasterCardComponent extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
           border: Border.all(
-            color: VColorUtils.secondaryColors, // Border color
+            color: VColorUtils.primaryColors, // Border color
             width: 3, // Border width
           ),
           borderRadius: BorderRadius.circular(25)),
@@ -34,7 +34,7 @@ class DisasterCardComponent extends StatelessWidget {
             height: 10,
           ),
           const Divider(
-            color: VColorUtils.secondaryColors,
+            color: VColorUtils.primaryColors,
           ),
           const SizedBox(
             height: 10,
