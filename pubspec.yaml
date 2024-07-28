@@ -60,6 +60,7 @@ dependencies:
   osm_flutter_hooks: ^1.4.0
   sliding_up_panel2: ^3.3.0+1
   dio: ^5.5.0+1
+  flutter_reactive_ble: ^5.3.1
   # sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:

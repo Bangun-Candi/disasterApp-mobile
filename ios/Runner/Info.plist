@@ -62,5 +62,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>iOS13 and higher</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>iOS12 and lower</string>
 </dict>
 </plist>

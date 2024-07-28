@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:get/get.dart';
+import 'package:merchant_app/core/helpers/ble_helpers.dart';
 import 'package:merchant_app/core/services/model/base_response_model.dart';
 import 'package:merchant_app/repositories/home_page_repo/home_page_repository.dart';
 import 'package:merchant_app/repositories/home_page_repo/request/get_my_location_request.dart';
@@ -17,6 +18,8 @@ class HomePageController extends GetxController {
 
   double longitude = 0;
   double latitude = 0;
+
+  final BLEHelpers _bleService = BLEHelpers();
 
   getMylocationData(double latitudeData, double longitudeData) async {
     isLoading.value = true;
@@ -57,8 +60,31 @@ class HomePageController extends GetxController {
 
     await Future.delayed(const Duration(milliseconds: 600));
 
-    BaseResponseModel data = await HomePageRepository().sendRescue(param);
+    try {
+      BaseResponseModel data = await HomePageRepository().sendRescue(param);
+    } catch (e) {
+      LogUtility.writeLog("api request failed : $e");
+      _searchForBleDevice();
+    }
 
     isLoading.value = false;
+  }
+
+  Future<void> _searchForBleDevice() async {
+    _bleService.scanForDevices().listen((device) async {
+      LogUtility.writeLog("Found device: ${device.name}");
+      await _bleService.connectToDevice(device);
+      await _sendRequestUsingBle();
+    });
+  }
+
+  Future<void> _sendRequestUsingBle() async {
+    final dataToSend = [1, 2, 3]; // Example data
+    await _bleService.writeCharacteristic(dataToSend);
+    _bleService.listenToCharacteristic().listen((data) {
+      LogUtility.writeLog("Received data: $data");
+
+      sendRescueRequest();
+    });
   }
 }
