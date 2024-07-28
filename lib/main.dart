@@ -1,14 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:merchant_app/core/utils/vcolor_utils.dart';
+import 'package:merchant_app/firebase_options.dart';
 import 'package:merchant_app/pages/splashscreen/splashscreen.dart';
 
 // late List<CameraDescription> camerasPort;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

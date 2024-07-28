@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "493874779503",
+    "project_id": "disaster-app-bae22",
+    "storage_bucket": "disaster-app-bae22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493874779503:android:7c2068c73e5459d7be049a",
+        "android_client_info": {
+          "package_name": "com.fiveDevHacks.merchantApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvT11TVinCxdQhTuP_zSYLN4YnmScwPZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
